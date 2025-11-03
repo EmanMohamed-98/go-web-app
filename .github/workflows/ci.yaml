@@ -33,6 +33,8 @@ jobs: # here we will start defining the stages of CI
   code-quality:
     runs-on: ubuntu-latest
 
+    needs: build # This stage will run only if the build stage is successful
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -41,6 +43,8 @@ jobs: # here we will start defining the stages of CI
         uses: golangci/golangci-lint-action@v6
         with: 
           version: v1.56.2
+          skip-cache: true
+
 
 # Third stage is to create the docker image and push it to Docker Hub
   docker-build-push:
