@@ -91,7 +91,7 @@ jobs: # here we will start defining the stages of CI
 
       - name: Update Helm Chart values.yaml with new image tag # Update the Helm Chart values.yaml file with the new image tag
         run: |
-          sed -i 's/tag: .*/tag: v${{ github.run_id }}/' helm/go-web-app-chart/values.yaml
+          sed -i 's/tag: .*/tag: "${{github.run_id}}"/' helm/go-web-app-chart/values.yaml
 
       - name: Commit and Push changes to Helm Chart # Commit and push the changes to the Helm Chart values.yaml file back to the repo
         run: |
