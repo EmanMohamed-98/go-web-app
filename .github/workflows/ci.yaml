@@ -32,7 +32,6 @@ jobs: # here we will start defining the stages of CI
 # Second stage is to run code quality checks
   code-quality:
     runs-on: ubuntu-latest
-    needs: build # This stage will run only if the build stage is successful
 
     steps:
       - name: Checkout repository
