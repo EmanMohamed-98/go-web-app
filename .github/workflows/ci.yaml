@@ -40,7 +40,7 @@ jobs: # here we will start defining the stages of CI
 
       - name: Install golangci-lint # Install golangci-lint tool to run code quality checks
         uses: golangci/golangci-lint-action@v6
-        with: |
+        with: 
           version: v1.56.2
 
 # Third stage is to create the docker image and push it to Docker Hub
