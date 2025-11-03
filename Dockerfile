@@ -1,0 +1,24 @@
+FROM golang:1.22.5 AS base 
+# Version of golang is identfied from the go.mod file
+
+WORKDIR /app
+
+COPY go.mod .
+
+RUN go mod download
+
+COPY . .
+
+RUN go build -o main .
+
+# Final stage with Distroless image
+
+FROM gcr.io/distroless/base
+
+COPY --from=base /app/main .
+
+COPY --from=base /app/static ./static
+
+EXPOSE 8080
+
+CMD ["./main"]
