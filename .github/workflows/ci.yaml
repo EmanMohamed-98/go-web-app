@@ -98,5 +98,5 @@ jobs: # here we will start defining the stages of CI
           git config --global user.name 'Eman Hegazy'
           git config --global user.email 'emanheg98@gmail.com'
           git add helm/go-web-app-chart/values.yaml
-          git commit -m "Update Helm Chart image tag to v${{ github.run_id }}"
+          git commit -m "Update Helm Chart image tag to ${{ github.run_id }}"
           git push
